@@ -7,6 +7,7 @@ package tela.listagem;
 
 import tela.manutencao.ManutencaoSacole;
 import controlador.ControladorSacole;
+
 /**
  *
  * @author Administrador
@@ -97,12 +98,12 @@ public class ListagemSacole extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-ManutencaoSacole manutencao = new ManutencaoSacole(null, true, this);
-manutencao.setVisible(true);        // TODO add your handling code here:
+        ManutencaoSacole manutencao = new ManutencaoSacole(null, true, this);
+        manutencao.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void tabelaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMousePressed
-  if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             //obtem a linha selecionada
             int linhaSelecionada = tabela.getSelectedRow();
             //obtém a chave primária
@@ -110,7 +111,7 @@ manutencao.setVisible(true);        // TODO add your handling code here:
             //abre a manutenção
             ManutencaoSacole manutencao = new ManutencaoSacole(null, true, this, pk);
             manutencao.setVisible(true);
-}      // TODO add your handling code here:
+        }      // TODO add your handling code here:
     }//GEN-LAST:event_tabelaMousePressed
 
     /**

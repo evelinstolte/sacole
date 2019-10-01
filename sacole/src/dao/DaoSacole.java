@@ -41,8 +41,8 @@ public class DaoSacole {
         
         objeto.setSabor("laraja");
         objeto.setData("dois do tres");
-        objeto.setPreco(rs.getDouble(300.00));
-        objeto.setNumero(rs.getInt(45));
+        objeto.setPreco(1.50);
+        objeto.setNumero(15);
         
         boolean resultado = inserir(objeto);
         if (resultado) {
@@ -108,7 +108,7 @@ public class DaoSacole {
 }
         public static Sacole consultar(int primaryKey) {
         //editar o SQL conforme a entidade
-        String sql = "SELECT sabor, datav, preco, numero FROM sacole WHERE codigo = ?";
+        String sql = "SELECT codigo,sabor, datav, preco, numero FROM sacole WHERE codigo = ?";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
@@ -117,11 +117,13 @@ public class DaoSacole {
             while (rs.next()) {
                 Sacole objeto = new Sacole();
                 //definir um set para cada atributo da entidade, cuidado com o tipo
-                
+                objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setSabor(rs.getString("sabor"));
                 objeto.setData(rs.getString("datav"));
                 objeto.setPreco(rs.getDouble("preco"));
                 objeto.setNumero(rs.getInt("numero"));
+                
+                
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {
