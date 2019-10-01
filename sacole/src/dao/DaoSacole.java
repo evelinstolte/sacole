@@ -5,13 +5,17 @@
  */
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Sacole;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author Administrador
@@ -24,7 +28,7 @@ public class DaoSacole {
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getSabor());
-            ps.setString(2, objeto.getData());
+            ps.setDate(2, Date.valueOf(objeto.getData()));
             ps.setDouble(3, objeto.getPreco());
             ps.setInt(4, objeto.getNumero());
             
@@ -40,7 +44,7 @@ public class DaoSacole {
         Sacole objeto = new Sacole();
         
         objeto.setSabor("laraja");
-        objeto.setData("dois do tres");
+        objeto.setData(LocalDate.parse("11/01/1988", DateTimeFormatter.ofPattern("dd/MM/yyyy"))); 
         objeto.setPreco(1.50);
         objeto.setNumero(15);
         
@@ -56,7 +60,7 @@ public class DaoSacole {
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getSabor()); 
-            ps.setString(2, objeto.getData());
+            ps.setDate(2, Date.valueOf(objeto.getData()));
             ps.setDouble(3, objeto.getPreco());
             ps.setInt(4, objeto.getNumero());
             ps.setInt(5, objeto.getCodigo());
@@ -94,7 +98,7 @@ public class DaoSacole {
                 
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setSabor(rs.getString("sabor"));
-                objeto.setData(rs.getString("datav"));
+                objeto.setData(rs.getDate("datav").toLocalDate());
                 objeto.setPreco(rs.getDouble("preco"));
                 objeto.setNumero(rs.getInt("numero"));
                 
@@ -119,7 +123,7 @@ public class DaoSacole {
                 //definir um set para cada atributo da entidade, cuidado com o tipo
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setSabor(rs.getString("sabor"));
-                objeto.setData(rs.getString("datav"));
+                objeto.setData(LocalDate.parse("11/01/1988", DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 objeto.setPreco(rs.getDouble("preco"));
                 objeto.setNumero(rs.getInt("numero"));
                 

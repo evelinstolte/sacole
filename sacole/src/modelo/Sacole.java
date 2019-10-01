@@ -5,6 +5,9 @@
  */
 package modelo;
 
+
+import java.time.LocalDate;
+
 /**
  *
  * @author Administrador
@@ -14,7 +17,7 @@ public class Sacole {
      
             private Integer codigo;
             private String sabor;
-            private String data;
+            private LocalDate data;
             private Double preco;
             private Integer numero;
 
@@ -34,11 +37,11 @@ public class Sacole {
         this.sabor = sabor;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -57,6 +60,8 @@ public class Sacole {
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
+
+  
 
     @Override
     public String toString() {

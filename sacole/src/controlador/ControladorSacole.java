@@ -8,6 +8,8 @@ package controlador;
 import tela.manutencao.ManutencaoSacole;
 
 import dao.DaoSacole;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import modelo.Sacole;
 import tela.manutencao.ManutencaoSacole;
@@ -27,7 +29,7 @@ public class ControladorSacole {
         Sacole objeto = new Sacole();
 
         objeto.setSabor(man.jtfSabor.getText());
-        objeto.setData(man.jtfData.getText());
+        objeto.setData(LocalDate.parse(man.jtfData.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setPreco(Double.parseDouble(man.jtfPreco.getText()));
         objeto.setNumero(Integer.parseInt(man.jtfNumero.getText()));
 
@@ -49,7 +51,7 @@ public class ControladorSacole {
 
         objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText()));
         objeto.setSabor(man.jtfSabor.getText());
-        objeto.setData(man.jtfData.getText());
+        objeto.setData(LocalDate.parse(man.jtfData.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setPreco(Double.parseDouble(man.jtfPreco.getText()));
         objeto.setNumero(Integer.parseInt(man.jtfNumero.getText()));
         boolean resultado = DaoSacole.alterar(objeto);
@@ -96,7 +98,7 @@ public class ControladorSacole {
             //definindo o conteúdo da tabela
             linha.add(objeto.getCodigo());
             linha.add(objeto.getSabor());
-            linha.add(objeto.getData());
+            linha.add(objeto.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))); 
             linha.add(objeto.getPreco());
             linha.add(objeto.getNumero());
 
@@ -111,7 +113,7 @@ public class ControladorSacole {
         
         man.jtfCodigo.setText(objeto.getCodigo().toString());
         man.jtfSabor.setText(objeto.getSabor());
-        man.jtfData.setText(objeto.getData());
+        man.jtfData.setText(objeto.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))); 
         man.jtfPreco.setText(objeto.getPreco().toString());
         man.jtfNumero.setText(objeto.getNumero().toString());
 
